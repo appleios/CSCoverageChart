@@ -9,10 +9,14 @@
 #import "CSCoverageChart.h"
 
 @interface CSCoverageChart ()
-@property CGFloat maximumRadius;
-@property CSCoverageArea* area;
-@property NSMutableArray* slicesArray;
-@property int slicesCount;
+
+@property (nonatomic) CGFloat maximumRadius;
+@property (nonatomic, strong) CSCoverageArea* area;
+@property (nonatomic, strong) NSMutableArray* slicesArray;
+@property (nonatomic) int slicesCount;
+
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+
 @end
 
 @implementation CSCoverageChart
@@ -20,25 +24,47 @@
     BOOL setupCompleted;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		[self setup];
+	}
+	return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        self.backgroundColor = [UIColor clearColor];
-        setupCompleted = NO;
-        self.selectedIndex = -1;
-        self.slicesArray = [NSMutableArray array];
+		[self setup];
     }
     return self;
+}
+
+- (void)setup
+{
+	self.backgroundColor = [UIColor clearColor];
+	setupCompleted = NO;
+	self.selectedIndex = -1;
+	self.slicesArray = [NSMutableArray array];
+	
+	self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+}
+
+- (void)tap:(UITapGestureRecognizer*)sender
+{
+	if(self.delegate){
+		
+	}
 }
 
 - (void)setupGraph {
     if (!setupCompleted) {
         
-        if (self.delegate) {
-            self.area = [self.delegate coverageAreaForChart:self];
-            self.slicesCount = [self.delegate numberOfSlicesForChart:self];
+        if (self.dataSource) {
+            self.area = [self.dataSource coverageAreaForChart:self];
+            self.slicesCount = [self.dataSource numberOfSlicesForChart:self];
         }
         
         [self reloadData];
@@ -50,22 +76,22 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    if (self.delegate) {
-        self.maximumRadius = [self.delegate maximumRadiusForChart:self];
+    if (self.dataSource) {
+        self.maximumRadius = [self.dataSource maximumRadiusForChart:self];
     }
 
     [self setupGraph];
 }
 
 - (void)reloadData {
-    if (!self.delegate) {
+    if (!self.dataSource) {
         return;
     }
     
     [self.slicesArray removeAllObjects];
     
     for (int i = 0; i < self.slicesCount; i++) {
-        CSCoverageSlice* slice = [self.delegate coverageChart:self sliceForIndex:i];
+        CSCoverageSlice* slice = [self.dataSource coverageChart:self sliceForIndex:i];
         if (slice != nil) {
             [self.slicesArray addObject:slice];
         }
@@ -116,12 +142,13 @@
 
         progress = progress + scaleGapSize;
     }
-
-    
-
 }
 
-- (void)drawSliceOfPie:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle fillColor:(UIColor *)fillColor strokeColor:(UIColor *)strokeColor lineWidth:(CGFloat)lineWidth
+- (void)drawSliceOfPie:(CGFloat)radius
+			startAngle:(CGFloat)startAngle
+			  endAngle:(CGFloat)endAngle fillColor:(UIColor *)fillColor
+		   strokeColor:(UIColor *)strokeColor
+			 lineWidth:(CGFloat)lineWidth
 {
     //draw arc
     CGPoint center = CGPointMake(self.bounds.size.height / 2, self.bounds.size.width / 2);
@@ -133,7 +160,11 @@
     next.y = center.y + radius * sin(startAngle);
     [arc addLineToPoint:next]; //go one end of arc
     
-    [arc addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES]; //add the arc
+    [arc addArcWithCenter:center
+				   radius:radius
+			   startAngle:startAngle
+				 endAngle:endAngle
+				clockwise:YES]; //add the arc
     [arc addLineToPoint:center]; //back to center
     
     [fillColor set];
@@ -142,8 +173,6 @@
     [arc stroke];
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     [self drawArea];
@@ -165,7 +194,6 @@
         
         CGFloat actualRadius = slice.value * self.maximumRadius;
 
-        
         [self drawSliceOfPie:actualRadius
                   startAngle:startAngle
                     endAngle:endAngle

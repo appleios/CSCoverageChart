@@ -9,8 +9,8 @@
 #import "ViewController.h"
 #import "CSCoverageChart.h"
 
-@interface ViewController ()
-@property (nonatomic,strong) CSCoverageChart* coverage;
+@interface ViewController () <CSCoverageChartDataSource, CSCoverageChartDelegate>
+@property (nonatomic, strong) CSCoverageChart* coverage;
 @end
 
 @implementation ViewController
@@ -23,15 +23,9 @@
     self.coverage = [[CSCoverageChart alloc] initWithFrame:CGRectMake(0,0, 600, 600)];
     
     self.coverage.center = self.view.center;
-    self.coverage.delegate = self;
+    self.coverage.dataSource = self;
     
     [self.view addSubview:self.coverage];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - chart delegate methods
@@ -51,7 +45,7 @@
 - (int)numberOfSlicesForChart:(CSCoverageChart *)chart {
     return 3;
 }
-- (CSCoverageSlice *)coverageChart:(CSCoverageChart *)chart sliceForIndex:(int)index {
+- (CSCoverageSlice *)coverageChart:(CSCoverageChart *)chart sliceForIndex:(NSUInteger)index {
     
     CSCoverageSlice* slice = [[CSCoverageSlice alloc] init];
     if (index == 0) {
@@ -69,6 +63,13 @@
     }
     
     return slice;
+}
+
+#pragma mark - Delegate -
+
+- (void)coverageChart:(CSCoverageChart *)chart didSelectSliceAtIndex:(NSUInteger)index
+{
+	NSLog(@"selected slice with index %lu",(unsigned long)index);
 }
 
 @end

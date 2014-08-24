@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8FA97A0219A9AFFE009BBB37 /* iPhone_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA97A0119A9AFFE009BBB37 /* iPhone_Main.storyboard */; };
+		8FA97A0419A9B026009BBB37 /* iPad_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA97A0319A9B026009BBB37 /* iPad_Main.storyboard */; };
 		D6994DDD1753FB9F0013A4B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6994DDC1753FB9F0013A4B5 /* UIKit.framework */; };
 		D6994DDF1753FB9F0013A4B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6994DDE1753FB9F0013A4B5 /* Foundation.framework */; };
 		D6994DE11753FB9F0013A4B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6994DE01753FB9F0013A4B5 /* CoreGraphics.framework */; };
@@ -17,13 +19,14 @@
 		D6994DF11753FB9F0013A4B5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6994DF01753FB9F0013A4B5 /* Default@2x.png */; };
 		D6994DF31753FB9F0013A4B5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6994DF21753FB9F0013A4B5 /* Default-568h@2x.png */; };
 		D6994DF61753FB9F0013A4B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6994DF51753FB9F0013A4B5 /* ViewController.m */; };
-		D6994DF91753FB9F0013A4B5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6994DF71753FB9F0013A4B5 /* ViewController.xib */; };
 		D6994E051753FBEB0013A4B5 /* CSCoverageArea.m in Sources */ = {isa = PBXBuildFile; fileRef = D6994E001753FBEB0013A4B5 /* CSCoverageArea.m */; };
 		D6994E061753FBEB0013A4B5 /* CSCoverageChart.m in Sources */ = {isa = PBXBuildFile; fileRef = D6994E021753FBEB0013A4B5 /* CSCoverageChart.m */; };
 		D6994E071753FBEB0013A4B5 /* CSCoverageSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = D6994E041753FBEB0013A4B5 /* CSCoverageSlice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8FA97A0119A9AFFE009BBB37 /* iPhone_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_Main.storyboard; sourceTree = "<group>"; };
+		8FA97A0319A9B026009BBB37 /* iPad_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad_Main.storyboard; sourceTree = "<group>"; };
 		D6994DD91753FB9F0013A4B5 /* CSCoverageChartExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSCoverageChartExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6994DDC1753FB9F0013A4B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6994DDE1753FB9F0013A4B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -39,7 +42,6 @@
 		D6994DF21753FB9F0013A4B5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D6994DF41753FB9F0013A4B5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D6994DF51753FB9F0013A4B5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D6994DF81753FB9F0013A4B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		D6994DFF1753FBEB0013A4B5 /* CSCoverageArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCoverageArea.h; path = ../CSCoverageArea.h; sourceTree = "<group>"; };
 		D6994E001753FBEB0013A4B5 /* CSCoverageArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCoverageArea.m; path = ../CSCoverageArea.m; sourceTree = "<group>"; };
 		D6994E011753FBEB0013A4B5 /* CSCoverageChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCoverageChart.h; path = ../CSCoverageChart.h; sourceTree = "<group>"; };
@@ -93,11 +95,12 @@
 		D6994DE21753FB9F0013A4B5 /* CSCoverageChartExample */ = {
 			isa = PBXGroup;
 			children = (
+				8FA97A0119A9AFFE009BBB37 /* iPhone_Main.storyboard */,
+				8FA97A0319A9B026009BBB37 /* iPad_Main.storyboard */,
 				D6994DEB1753FB9F0013A4B5 /* AppDelegate.h */,
 				D6994DEC1753FB9F0013A4B5 /* AppDelegate.m */,
 				D6994DF41753FB9F0013A4B5 /* ViewController.h */,
 				D6994DF51753FB9F0013A4B5 /* ViewController.m */,
-				D6994DF71753FB9F0013A4B5 /* ViewController.xib */,
 				D6994DE31753FB9F0013A4B5 /* Supporting Files */,
 			);
 			path = CSCoverageChartExample;
@@ -184,8 +187,9 @@
 				D6994DE71753FB9F0013A4B5 /* InfoPlist.strings in Resources */,
 				D6994DEF1753FB9F0013A4B5 /* Default.png in Resources */,
 				D6994DF11753FB9F0013A4B5 /* Default@2x.png in Resources */,
+				8FA97A0219A9AFFE009BBB37 /* iPhone_Main.storyboard in Resources */,
 				D6994DF31753FB9F0013A4B5 /* Default-568h@2x.png in Resources */,
-				D6994DF91753FB9F0013A4B5 /* ViewController.xib in Resources */,
+				8FA97A0419A9B026009BBB37 /* iPad_Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,14 +218,6 @@
 				D6994DE61753FB9F0013A4B5 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D6994DF71753FB9F0013A4B5 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D6994DF81753FB9F0013A4B5 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -292,6 +288,7 @@
 				GCC_PREFIX_HEADER = "CSCoverageChartExample/CSCoverageChartExample-Prefix.pch";
 				INFOPLIST_FILE = "CSCoverageChartExample/CSCoverageChartExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -303,6 +300,7 @@
 				GCC_PREFIX_HEADER = "CSCoverageChartExample/CSCoverageChartExample-Prefix.pch";
 				INFOPLIST_FILE = "CSCoverageChartExample/CSCoverageChartExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

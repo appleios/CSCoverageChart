@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CSCoverageChart.h"
 
-@interface ViewController : UIViewController<CSCoverageChartDelegate>
+@interface ViewController : UIViewController
 
 @end
